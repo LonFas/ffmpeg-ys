@@ -1,0 +1,27 @@
+#! /bin/bash
+VBR="2500k"
+FPS="40"
+QUAL="fast"
+BUFFS="512k"
+YOUTUBE_URL="rtmp://a.rtmp.youtube.com/live2"
+
+KEY="set-your-secret-key-here"
+
+VIDEO="1920x1080"
+
+ffmpeg \
+	-f x11grab \
+       	-framerate $FPS \
+	-video_size $VIDEO \
+	-i :0.0+1920,0 \
+	-f pulse \
+	-i default \
+	-c:v libx264 \
+	-preset $QUAL \
+	-maxrate $VBR \
+	-bufsize $BUFFS \
+	-g 60 \
+	-vf format=yuv420p \
+	-c:a aac \
+	-b:a 128k \
+        -f flv "$YOUTUBE_URL/$KEY"
