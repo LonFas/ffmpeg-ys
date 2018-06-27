@@ -2,6 +2,8 @@
 Simple bash script what i use to stream from my second display
 
 How the displays are located.
+
+```
                    ____________________
                    |                  |
 ___________________|                  |
@@ -11,3 +13,5 @@ ___________________|                  |
 |      display     |__________________|
 |                  |
 |__________________|
+
+```
